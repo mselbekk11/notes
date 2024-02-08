@@ -8,6 +8,7 @@ import {
 } from '@kinde-oss/kinde-auth-nextjs/components';
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server';
 import { UserNav } from './UserNav';
+import { Scroll } from 'lucide-react';
 
 export async function Navbar() {
   const { isAuthenticated, getUser } = getKindeServerSession();
@@ -17,7 +18,10 @@ export async function Navbar() {
     <nav className='border-b bg-background h-[10vh] flex items-center'>
       <div className='container flex items-center justify-between'>
         <Link href={'/'}>
-          <h1 className='font-bold text-3xl '>Notes</h1>
+          <div className='flex items-center'>
+            <Scroll size={28} className='mr-2'/>
+            <h1 className='font-bold text-3xl '>Notes</h1>
+          </div>
         </Link>
         <div className='flex items-center gap-x-5'>
           <ThemeToggle />

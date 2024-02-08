@@ -550,3 +550,43 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* MY STYLES */
+
+.hero-image {
+  display: inline-block;
+}
+
+.anchor {
+  bottom: 0px;
+  position: absolute;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+}
+
+@keyframes slideFromDownAndFade {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slideFromDownAndFade {
+  animation: slideFromDownAndFade .6s ease-in-out both;
+}
+
+.home {
+  --animation-delay: 90ms;
+}
+
+.\[animation-delay\:calc\(var\(--animation-delay\)\*2\)\] {
+  animation-delay: calc(var(--animation-delay) * 2)
+}

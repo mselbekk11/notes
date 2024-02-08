@@ -99,9 +99,9 @@ export default async function DashboardPage() {
                 </Link>
                 <form action={deleteNote}>
                   <input type='hidden' name='noteId' value={item.id} />
-                  <Button variant={'destructive'} size='icon' type='submit'>
-                    <TrashDelete />
-                  </Button>
+                  <TrashDelete />
+                  {/* <Button variant={'destructive'} size='icon' type='submit'>
+                  </Button> */}
                 </form>
               </div>
             </Card>
