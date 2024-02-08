@@ -9,12 +9,17 @@ import { TrashDelete } from '../components/Submitbuttons';
 
 async function getData(userId: string) {
   noStore();
-  const data = await prisma.note.findMany({
+  const data = await prisma.user.findUnique({
     where: {
-      userId: userId,
+      id: userId,
     },
-    orderBy: {
-      createdAt: 'desc',
+    select: {
+      Notes: true,
+      Subscription: {
+        select: {
+          status: true,
+        },
+      },
     },
   });
 
@@ -52,11 +57,17 @@ export default async function DashboardPage() {
           </p> */}
         </div>
 
-        <Button asChild>
-          <Link href='/dashboard/new'>Create a new Note</Link>
-        </Button>
+        {data?.Subscription?.status === 'active' ? (
+          <Button asChild>
+            <Link href='/dashboard/new'>Create a new Note</Link>
+          </Button>
+        ) : (
+          <Button asChild>
+            <Link href='/dashboard/billing'>Create a new Note</Link>
+          </Button>
+        )}
       </div>
-      {data.length < 1 ? (
+      {data?.Notes.length == 0 ? (
         <div className='flex min-h-[400px] flex-col items-center justify-center rounded-md border border-dashed p-8 text-center animate-in fade-in-50'>
           <div className='flex h-20 w-20 items-center justify-center rounded-full bg-primary/10'>
             <File className='h-12 w-12 text-primary' />
@@ -69,13 +80,19 @@ export default async function DashboardPage() {
             can see them right here.
           </p>
 
-          <Button asChild>
-            <Link href='/dashboard/new'>Create a new Note</Link>
-          </Button>
+          {data?.Subscription?.status === 'active' ? (
+            <Button asChild>
+              <Link href='/dashboard/new'>Create a new Note</Link>
+            </Button>
+          ) : (
+            <Button asChild>
+              <Link href='/dashboard/billing'>Create a new Note</Link>
+            </Button>
+          )}
         </div>
       ) : (
         <div className='flex flex-col gap-y-4'>
-          {data.map((item) => (
+          {data?.Notes.map((item) => (
             <Card
               key={item.id}
               className='flex items-center justify-between p-4'
