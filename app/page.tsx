@@ -21,11 +21,11 @@ export default async function Home() {
             </span>
 
             <h1 className='mt-8 text-3xl font-extrabold tracking-tight lg:text-6xl'>
-              Create Notes with AI
+              Create Notes with Ease
             </h1>
             <p className='max-w-xl mx-auto mt-8 text-base lg:text-xl text-secondary-foreground'>
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-              nonumy eirmod tempor invidunt ut labore et d
+              Dive into a streamlined note-taking experience designed to
+              declutter your mind and workspace.
             </p>
           </div>
           <div className='flex justify-center max-w-sm mx-auto mt-10'>
